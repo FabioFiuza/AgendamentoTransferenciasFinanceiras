@@ -1,0 +1,37 @@
+*.jar
+*.war
+*.ear
+*.class
+
+# others specific
+/.clover
+/.factorypath
+/.springBeans
+.springWebflow
+rebel.xml
+*~
+
+# maven 
+/target
+
+# eclipse specific git ignore
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch

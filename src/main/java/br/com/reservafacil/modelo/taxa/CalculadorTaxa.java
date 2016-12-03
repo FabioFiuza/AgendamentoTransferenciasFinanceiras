@@ -1,10 +1,11 @@
-package br.com.reservafacil.modelo;
+package br.com.reservafacil.modelo.taxa;
 
 import java.math.BigDecimal;
 
 import br.com.reservafacil.modelo.tipocalculo.CalculoTipoA;
 import br.com.reservafacil.modelo.tipocalculo.CalculoTipoB;
 import br.com.reservafacil.modelo.tipocalculo.CalculoTipoC;
+import br.com.reservafacil.modelo.tipocalculo.CalculoTipoD;
 import br.com.reservafacil.modelo.tipocalculo.TipoCalculo;
 import br.com.reservafacil.modelo.transferencia.TipoTransferencia;
 import br.com.reservafacil.modelo.transferencia.Transferencia;
@@ -26,7 +27,7 @@ public class CalculadorTaxa {
 	}
 
 	/**
-	 * Metodo responsavel por devolver o valor baseado no tipo de transferencia escolhida
+	 * Metodo responsavel por devolver o valor da taxa baseado no tipo de transferencia escolhida
 	 * @return retorna o valor da taxa da transferencia
 	 */
 	
@@ -39,7 +40,10 @@ public class CalculadorTaxa {
 
 		} else if(transferencia.getTipo() == TipoTransferencia.C) {
 			tipoCalculo = new CalculoTipoC(); 
-		} 
+		
+		} else if(transferencia.getTipo() == TipoTransferencia.D) {
+			tipoCalculo = CalculoTipoD.getTipoCalculoBaseadoValorTransfenrecia(transferencia.getValor()); 	
+		}
 		
 		return tipoCalculo.calcularTaxa(transferencia);
 	}

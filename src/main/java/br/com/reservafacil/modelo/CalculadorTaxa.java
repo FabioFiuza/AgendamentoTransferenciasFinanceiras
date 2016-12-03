@@ -2,45 +2,46 @@ package br.com.reservafacil.modelo;
 
 import java.math.BigDecimal;
 
+import br.com.reservafacil.modelo.tipocalculo.CalculoTipoA;
+import br.com.reservafacil.modelo.tipocalculo.CalculoTipoB;
+import br.com.reservafacil.modelo.tipocalculo.CalculoTipoC;
+import br.com.reservafacil.modelo.tipocalculo.TipoCalculo;
+import br.com.reservafacil.modelo.transferencia.TipoTransferencia;
+import br.com.reservafacil.modelo.transferencia.Transferencia;
+
 public class CalculadorTaxa {
 	
-	private TipoTransferencia tipoTransferencia;
-	private BigDecimal valorTrasnferencia; 
+	private Transferencia transferencia;
 	private TipoCalculo tipoCalculo;
 	
-	public static CalculadorTaxa getInstance(TipoTransferencia tipoTransferencia, BigDecimal valorTrasnferencia) {
+	public static CalculadorTaxa getInstance(Transferencia transferencia) {
 		CalculadorTaxa calculador = new CalculadorTaxa();
-		calculador.setTipoTransferencia(tipoTransferencia);
-		calculador.setValorTrasnferencia(valorTrasnferencia);
+		calculador.setTransferencia(transferencia);
 		
 		return calculador;
 	}
 	
+	private void setTransferencia(Transferencia transferencia) {
+		this.transferencia = transferencia;	
+	}
+
 	/**
 	 * Metodo responsavel por devolver o valor baseado no tipo de transferencia escolhida
 	 * @return retorna o valor da taxa da transferencia
 	 */
 	
 	public BigDecimal valorCalculado() {
-		if(tipoTransferencia == TipoTransferencia.A) {
+		if(transferencia.getTipo() == TipoTransferencia.A) {
 			tipoCalculo = new CalculoTipoA(); 
 		
-		} else if(tipoTransferencia == TipoTransferencia.B) {
+		} else if(transferencia.getTipo() == TipoTransferencia.B) {
 			tipoCalculo = new CalculoTipoB(); 
 
-		} else if(tipoTransferencia == TipoTransferencia.C) {
+		} else if(transferencia.getTipo() == TipoTransferencia.C) {
 			tipoCalculo = new CalculoTipoC(); 
 		} 
 		
-		return tipoCalculo.calcularTaxa(valorTrasnferencia);
-	}
-	
-	private void setTipoTransferencia(TipoTransferencia tipoTransferencia) {
-		this.tipoTransferencia = tipoTransferencia;
-	}
-	
-	private void setValorTrasnferencia(BigDecimal valorTrasnferencia) {
-		this.valorTrasnferencia = valorTrasnferencia;
+		return tipoCalculo.calcularTaxa(transferencia);
 	}
 
 }

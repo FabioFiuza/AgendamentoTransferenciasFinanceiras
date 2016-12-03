@@ -1,4 +1,4 @@
-package br.com.reservafacil.modelo;
+package br.com.reservafacil.modelo.transferencia;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 
 import br.com.reservafacil.modelo.transferencia.Transferencia;
 
-public class CalculoTipoC implements TipoCalculo {
+public class TipoCalculoC implements TipoCalculo {
 
 	@Override
 	public BigDecimal calcularTaxa(Transferencia transferencia) {

@@ -2,10 +2,10 @@ package br.com.reservafacil.modelo.taxa;
 
 import java.math.BigDecimal;
 
-import br.com.reservafacil.modelo.tipocalculo.CalculoTipoA;
-import br.com.reservafacil.modelo.tipocalculo.CalculoTipoB;
-import br.com.reservafacil.modelo.tipocalculo.CalculoTipoC;
-import br.com.reservafacil.modelo.tipocalculo.CalculoTipoD;
+import br.com.reservafacil.modelo.tipocalculo.TipoCalculoA;
+import br.com.reservafacil.modelo.tipocalculo.TipoCalculoB;
+import br.com.reservafacil.modelo.tipocalculo.TipoCalculoC;
+import br.com.reservafacil.modelo.tipocalculo.TipoCalculoD;
 import br.com.reservafacil.modelo.tipocalculo.TipoCalculo;
 import br.com.reservafacil.modelo.transferencia.TipoTransferencia;
 import br.com.reservafacil.modelo.transferencia.Transferencia;
@@ -33,16 +33,16 @@ public class CalculadorTaxa {
 	
 	public BigDecimal valorCalculado() {
 		if(transferencia.getTipo() == TipoTransferencia.A) {
-			tipoCalculo = new CalculoTipoA(); 
+			tipoCalculo = new TipoCalculoA(); 
 		
 		} else if(transferencia.getTipo() == TipoTransferencia.B) {
-			tipoCalculo = new CalculoTipoB(); 
+			tipoCalculo = new TipoCalculoB(); 
 
 		} else if(transferencia.getTipo() == TipoTransferencia.C) {
-			tipoCalculo = new CalculoTipoC(); 
+			tipoCalculo = new TipoCalculoC(); 
 		
 		} else if(transferencia.getTipo() == TipoTransferencia.D) {
-			tipoCalculo = CalculoTipoD.getTipoCalculoBaseadoValorTransfenrecia(transferencia.getValor()); 	
+			tipoCalculo = TipoCalculoD.getTipoCalculoBaseadoValorTransfenrecia(transferencia.getValor()); 	
 		}
 		
 		return tipoCalculo.calcularTaxa(transferencia);

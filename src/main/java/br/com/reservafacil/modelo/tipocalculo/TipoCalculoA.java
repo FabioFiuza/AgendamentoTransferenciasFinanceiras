@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.reservafacil.modelo.transferencia.Transferencia;
 
-public class CalculoTipoA implements TipoCalculo {
+public class TipoCalculoA implements TipoCalculo {
 
 	@Override
 	public BigDecimal calcularTaxa(Transferencia transferencia) {

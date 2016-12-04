@@ -13,8 +13,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
-import br.com.reservafacil.modelo.taxa.CalculadorTaxa;
-import br.com.reservafacil.modelo.transferencia.Transferencia;
+import br.com.reservafacil.modelo.Transferencia;
+import br.com.reservafacil.service.CalculadorTaxaService;
 
 @Controller
 public class TransferenciaController {
@@ -41,7 +41,7 @@ public class TransferenciaController {
 	public void agendarTransferenciaT(Transferencia transferencia) {
 		if(isNaoContemErrosValidacao(transferencia)) {
 			transferencia.setDataCadastro(LocalDate.now());
-			transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia).valorCalculado());
+			transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).valorCalculado());
 			transferencias.add(transferencia);
 			result.use(Results.json()).from(transferencia, "transferencia").serialize();
 		}

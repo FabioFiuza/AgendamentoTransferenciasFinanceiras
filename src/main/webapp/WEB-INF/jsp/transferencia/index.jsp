@@ -11,9 +11,6 @@
 <body style="background: #eceff1" ng-controller="TransferenciaController">
 
 	<div class="container">
-	
-		<input type="hidden" id="date_input" name="date_input">
-
 		<div class="row">
 			<div class="col 12 md7">
 				<div class="card #fafafa grey lighten-5">
@@ -35,14 +32,13 @@
 										<input id="valorTransferencia" type="text" class="validate" ng-model="transferencia.valor"> <label for="valorTransferencia">Valor da transferência</label>
 									</div>
 									<div class="input-field col s6">
-										<label for="dataAgendamento">Data do agendamento</label> <input type="text" class="datepicker" id="dataAgendamento"
-										ng-model="transferencia.dataAgendamento">
+										<label for="dataAgendamento">Data do agendamento</label> <input type="text" class="datepicker" id="dataAgendamento" ng-model="transferencia.dataAgendamento">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="input-field col s6">
-										<select ng-model="transferencia.tipo" ng-options="tipo.valor as tipo.label for tipo in tiposTransferencia">
+										<select id="tipoTransferencia" ng-model="transferencia.tipo" ng-options="tipo.valor as tipo.label for tipo in tiposTransferencia">
 											<option value="" disabled selected>Selecione um tipo</option>
 										</select> <label>Tipo de transferência</label>
 									</div>
@@ -96,7 +92,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

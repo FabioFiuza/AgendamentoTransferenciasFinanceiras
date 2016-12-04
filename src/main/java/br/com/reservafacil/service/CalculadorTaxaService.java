@@ -1,24 +1,22 @@
-package br.com.reservafacil.modelo.taxa;
+package br.com.reservafacil.service;
 
 import java.math.BigDecimal;
 
-import br.com.reservafacil.modelo.tipocalculo.TipoCalculoA;
-import br.com.reservafacil.modelo.tipocalculo.TipoCalculoB;
-import br.com.reservafacil.modelo.tipocalculo.TipoCalculoC;
-import br.com.reservafacil.modelo.tipocalculo.TipoCalculoD;
-import br.com.reservafacil.modelo.tipocalculo.TipoCalculo;
-import br.com.reservafacil.modelo.transferencia.TipoTransferencia;
-import br.com.reservafacil.modelo.transferencia.Transferencia;
+import br.com.reservafacil.modelo.Transferencia;
+import br.com.reservafacil.modelo.enumeration.TipoTransferencia;
+import br.com.reservafacil.service.interfaces.TipoCalculo;
 
-public class CalculadorTaxa {
+public class CalculadorTaxaService {
 	
 	private Transferencia transferencia;
 	private TipoCalculo tipoCalculo;
 	
-	public static CalculadorTaxa getInstance(Transferencia transferencia) {
-		CalculadorTaxa calculador = new CalculadorTaxa();
-		calculador.setTransferencia(transferencia);
-		
+	public CalculadorTaxaService(Transferencia transferencia) {
+		setTransferencia(transferencia);
+	}
+	
+	public static CalculadorTaxaService getInstance(Transferencia transferencia) {
+		CalculadorTaxaService calculador = new CalculadorTaxaService(transferencia);		
 		return calculador;
 	}
 	

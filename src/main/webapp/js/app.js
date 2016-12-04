@@ -10,8 +10,9 @@ angular.controller('TransferenciaController', function ($scope, $http) {
 				
 		$http.post('/transferencia/agendar', transferencia).then(function(data) {
 			carregarListaTransferencias();
+			resetSelectTipoTransferencia();
 			delete $scope.transferencia;
-	    });
+	    });		
 	}
 	
 	var setCalendarioValor = function (transferencia) {
@@ -33,6 +34,13 @@ angular.controller('TransferenciaController', function ($scope, $http) {
 			{label: 'C', valor: 'C'},
 			{label: 'D', valor: 'D'}
 		];
+	}
+	
+	var resetSelectTipoTransferencia = function () {
+		$(function () {
+			$('#tipoTransferencia').val("");
+			$('#tipoTransferencia').material_select();
+		});
 	}
 	
 	carregarTiposDeTransferencia();

@@ -8,9 +8,8 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.reservafacil.modelo.taxa.CalculadorTaxa;
-import br.com.reservafacil.modelo.transferencia.TipoTransferencia;
-import br.com.reservafacil.modelo.transferencia.Transferencia;
+import br.com.reservafacil.modelo.enumeration.TipoTransferencia;
+import br.com.reservafacil.service.CalculadorTaxaService;
 
 public class CalculoTaxaTipoCTest {
 
@@ -29,7 +28,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosMaiorTrintaDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(31));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("1.80")) == 0); 
@@ -38,7 +37,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteTrintaDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(30));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("3.15")) == 0); 
@@ -47,7 +46,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteVinteCincoDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(25));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("6.45")) == 0); 
@@ -56,7 +55,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteVinteDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(20));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("8.10")) == 0); 
@@ -65,7 +64,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteQuinzeDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(15));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("10.05")) == 0); 
@@ -74,7 +73,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteDezDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(10));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("11.10")) == 0); 
@@ -83,7 +82,7 @@ public class CalculoTaxaTipoCTest {
 	@Test
 	public void calcularValorTaxaParaTransferenciaTipoCParaAgendamentosAteCincoDias () {
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(5));
-		transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia)
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
 				.valorCalculado());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("12.45")) == 0); 

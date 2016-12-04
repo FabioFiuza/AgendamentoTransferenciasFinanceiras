@@ -1,6 +1,8 @@
-package br.com.reservafacil.modelo.tipocalculo;
+package br.com.reservafacil.service;
 
 import java.math.BigDecimal;
+
+import br.com.reservafacil.service.interfaces.TipoCalculo;
 
 public class TipoCalculoD {
 	

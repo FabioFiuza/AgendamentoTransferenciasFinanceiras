@@ -1,8 +1,10 @@
-package br.com.reservafacil.modelo.transferencia;
+package br.com.reservafacil.modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import br.com.reservafacil.modelo.enumeration.TipoTransferencia;
 
 public class Transferencia implements Serializable {
 

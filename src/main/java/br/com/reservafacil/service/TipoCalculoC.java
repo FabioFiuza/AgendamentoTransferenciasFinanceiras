@@ -1,10 +1,11 @@
-package br.com.reservafacil.modelo.tipocalculo;
+package br.com.reservafacil.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.temporal.ChronoUnit;
 
-import br.com.reservafacil.modelo.transferencia.Transferencia;
+import br.com.reservafacil.modelo.Transferencia;
+import br.com.reservafacil.service.interfaces.TipoCalculo;
 
 public class TipoCalculoC implements TipoCalculo {
 

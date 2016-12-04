@@ -1,14 +1,18 @@
 package br.com.reservafacil.controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import br.com.caelum.vraptor.Consumes;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import br.com.reservafacil.modelo.taxa.CalculadorTaxa;
 import br.com.reservafacil.modelo.transferencia.Transferencia;
 
@@ -16,7 +20,7 @@ import br.com.reservafacil.modelo.transferencia.Transferencia;
 public class TransferenciaController {
 
 	private final Result result;
-	private static List<Transferencia> simularBancoDandos; 
+	private static List<Transferencia> transferencias = new ArrayList<>();
 	
 	protected TransferenciaController() {
 		this(null);
@@ -29,25 +33,25 @@ public class TransferenciaController {
 	
 	@Path("/")
 	public void index() {
-		//TODO - Abrir pagina inicial da aplicacao
 	}
 	
 	@Post
 	@Path("/agendar")
+	@Consumes("application/json")
 	public void agendarTransferenciaT(Transferencia transferencia) {
 		if(isNaoContemErrosValidacao(transferencia)) {
+			transferencia.setDataCadastro(LocalDate.now());
 			transferencia.setTaxa(CalculadorTaxa.getInstance(transferencia).valorCalculado());
-			simularBancoDandos.add(transferencia);					
-			
-			result.include(transferencia); //TODO - Confirmar se a chamada e feita dessa forma
+			transferencias.add(transferencia);
+			result.use(Results.json()).from(transferencia, "transferencia").serialize();
 		}
 	}
 	
 	@Get
 	@Path("/listar")
 	public void listarTrasnferencia() {
-		if(simularBancoDandos != null) {
-			result.include(simularBancoDandos);
+		if(transferencias != null) {
+			result.use(Results.json()).from(transferencias, "transferencias").include("dataAgendamento", "dataCadastro") .serialize();
 		}
 	}
 

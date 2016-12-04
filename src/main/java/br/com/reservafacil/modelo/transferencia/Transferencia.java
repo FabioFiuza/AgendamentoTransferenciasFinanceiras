@@ -1,10 +1,13 @@
 package br.com.reservafacil.modelo.transferencia;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Transferencia {
+public class Transferencia implements Serializable {
 
+	private static final long serialVersionUID = -2468290111398686739L;
+	
 	private String contaOrigem; 
 	private String contaDestino; 
 	private BigDecimal valor; 

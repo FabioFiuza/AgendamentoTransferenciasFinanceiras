@@ -17,7 +17,8 @@ Breve sistema para criar agendamentos de transações financeiras.
 
 - Para acessar local basta utilizar a url: http://localhost:8080/transferencia/
 
-# Java 8 
+# Java 8
+- Necessario ter ao menos algum JDK 8 na maquina. 
 - Como biblioteca do projeto foi utilizado o mais recente JDk 8. 
 - Foi utilizado a nova classe de datas do java 8 (LocalDate), ao invés das antigas bibliocates (Calendar e Date). Por conta da utilização do LocalDate, foi necessário criar alguns convertes, para que as datas sejam convertidas corretamente nas requisões do vraptor (LocalDateJsonDeserializer, LocalDateGsonConverter).
 

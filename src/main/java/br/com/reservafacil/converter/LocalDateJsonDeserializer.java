@@ -9,6 +9,13 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
+/**
+ * Para converter os dados do tipo json (do tipo data) que vem da view,
+ * foi criado esse converter. 
+ *  
+ * @author fabiofiuza
+ *
+ */
 public class LocalDateJsonDeserializer implements JsonDeserializer<LocalDate>{
 
 	@Override

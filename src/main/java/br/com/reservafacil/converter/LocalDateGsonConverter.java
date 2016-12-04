@@ -11,6 +11,14 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+/**
+ * Para converter os dados do tipo localdate que sao enviados para view,
+ * foi criado esse converter. 
+ *  
+ * @author fabiofiuza
+ *
+ */
+
 @Dependent
 public class LocalDateGsonConverter implements JsonSerializer<LocalDate> {
 

@@ -22,7 +22,6 @@ angular.controller('TransferenciaController', function ($scope, $http) {
 	
 	var carregarListaTransferencias = function () {
 		$http.get('/transferencia/listar').then(function(response) {
-			console.log(response.data.transferencias);
 			$scope.transferencias = response.data.transferencias; 
 	    });
 	}

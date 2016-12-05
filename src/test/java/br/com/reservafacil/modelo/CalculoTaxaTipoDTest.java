@@ -8,7 +8,8 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.reservafacil.modelo.enumeration.TipoTransferencia;
+import br.com.reservafacil.model.Transferencia;
+import br.com.reservafacil.model.enumeration.TipoTransferencia;
 import br.com.reservafacil.service.CalculadorTaxaService;
 
 public class CalculoTaxaTipoDTest {
@@ -28,7 +29,7 @@ public class CalculoTaxaTipoDTest {
 	@Test
 	public void calcularValorTaxaTipoDMaiorQueCentoVinteMil () {
 		transferencia.setValor(new BigDecimal("130000"));
-		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).valorCalculado());
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("2730")) == 0);
 	}
@@ -38,7 +39,7 @@ public class CalculoTaxaTipoDTest {
 		transferencia.setValor(new BigDecimal("130000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(25));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado());
+				.getValorTaxa());
 			
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("5590")) == 0);
 	}
@@ -48,7 +49,7 @@ public class CalculoTaxaTipoDTest {
 		transferencia.setValor(new BigDecimal("130000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(20));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado());
+				.getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("7020")) == 0);
 	}
@@ -58,7 +59,7 @@ public class CalculoTaxaTipoDTest {
 		transferencia.setValor(new BigDecimal("130000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(15));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado());
+				.getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("8710")) == 0);
 	}
@@ -68,7 +69,7 @@ public class CalculoTaxaTipoDTest {
 		transferencia.setValor(new BigDecimal("130000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(10));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado());
+				.getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("9620")) == 0);
 	}
@@ -78,7 +79,7 @@ public class CalculoTaxaTipoDTest {
 		transferencia.setValor(new BigDecimal("130000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(5));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado());
+				.getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("10790")) == 0);
 	}
@@ -86,21 +87,21 @@ public class CalculoTaxaTipoDTest {
 	public void calcularValorTaxaTipoDEntreVinteCincoMilEhCentoVinteMilMaiorTrintaDias() {
 		transferencia.setValor(new BigDecimal("30000"));
 		transferencia.setDataAgendamento(LocalDate.now().minusDays(50));
-		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).valorCalculado());
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("8")) == 0);
 	}
 	
 	public void calcularValorTaxaTipoDEntreVinteCincoMilEhCentoVinteMil() {
 		transferencia.setValor(new BigDecimal("30000"));
-		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).valorCalculado());
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("10")) == 0);
 	}
 	
 	public void calcularValorTaxaTipoDAteVinteCincoMil() {
 		transferencia.setValor(new BigDecimal("25000"));
-		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).valorCalculado());
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia).getValorTaxa());
 		
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal("752")) == 0);
 	}

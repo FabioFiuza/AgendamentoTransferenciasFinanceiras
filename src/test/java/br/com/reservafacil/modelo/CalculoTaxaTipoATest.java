@@ -8,7 +8,8 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.reservafacil.modelo.enumeration.TipoTransferencia;
+import br.com.reservafacil.model.Transferencia;
+import br.com.reservafacil.model.enumeration.TipoTransferencia;
 import br.com.reservafacil.service.CalculadorTaxaService;
 
 public class CalculoTaxaTipoATest {
@@ -29,7 +30,7 @@ public class CalculoTaxaTipoATest {
 	public void calcularValorTaxaTipoA() {
 		transferencia.setDataAgendamento(LocalDate.now());
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.valorCalculado()); 		
+				.getValorTaxa()); 		
 
 		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal(6.5)) == 0);
 	}

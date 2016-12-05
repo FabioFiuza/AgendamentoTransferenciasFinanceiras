@@ -2,10 +2,10 @@ package br.com.reservafacil.service;
 
 import java.math.BigDecimal;
 
-import br.com.reservafacil.modelo.Transferencia;
+import br.com.reservafacil.model.Transferencia;
 import br.com.reservafacil.service.interfaces.TipoCalculo;
 
-public class TipoCalculoA implements TipoCalculo {
+public class TipoCalculoAService implements TipoCalculo {
 
 	@Override
 	public BigDecimal calcularTaxa(Transferencia transferencia) {

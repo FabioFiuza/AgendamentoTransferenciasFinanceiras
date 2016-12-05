@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.temporal.ChronoUnit;
 
-import br.com.reservafacil.modelo.Transferencia;
+import br.com.reservafacil.model.Transferencia;
 import br.com.reservafacil.service.interfaces.TipoCalculo;
 
-public class TipoCalculoC implements TipoCalculo {
+public class TipoCalculoCService implements TipoCalculo {
 
 	@Override
 	public BigDecimal calcularTaxa(Transferencia transferencia) {

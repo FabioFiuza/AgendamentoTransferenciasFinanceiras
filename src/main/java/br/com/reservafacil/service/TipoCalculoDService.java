@@ -4,19 +4,19 @@ import java.math.BigDecimal;
 
 import br.com.reservafacil.service.interfaces.TipoCalculo;
 
-public class TipoCalculoD {
+public class TipoCalculoDService {
 	
 	public static TipoCalculo getTipoCalculoBaseadoValorTransfenrecia(BigDecimal valorTransferencia) {
 		TipoCalculo tipoCalculo = null; 
 		
 		if(valorTransferenciaAteVinteCincoMil(valorTransferencia)) {
-			tipoCalculo = new TipoCalculoA();
+			tipoCalculo = new TipoCalculoAService();
 		
 		} else if (valorTransferenciaEntreVinteCincoMilEhUmAteCentoVinteMil(valorTransferencia) ) {
-			tipoCalculo = new TipoCalculoB();
+			tipoCalculo = new TipoCalculoBService();
 		
 		} else if (valorTransferenciaMaiorQueCentoVinteMil(valorTransferencia)) {
-			tipoCalculo = new TipoCalculoC();
+			tipoCalculo = new TipoCalculoCService();
 		}
 		
 		return tipoCalculo; 

@@ -1,4 +1,4 @@
-package br.com.reservafacil.modelo;
+package br.com.reservafacil.service;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +12,7 @@ import br.com.reservafacil.model.Transferencia;
 import br.com.reservafacil.model.enumeration.TipoTransferencia;
 import br.com.reservafacil.service.CalculadorTaxaService;
 
-public class CalculoTaxaTipoATest {
+public class CalculoTaxaTipoBTest {
 	
 	private Transferencia transferencia; 
 
@@ -23,18 +23,25 @@ public class CalculoTaxaTipoATest {
 		transferencia.setContaOrigem("88057-4");
 		transferencia.setValor(new BigDecimal("150"));
 		transferencia.setDataCadastro(LocalDate.now());
-		transferencia.setTipo(TipoTransferencia.A);
+		transferencia.setTipo(TipoTransferencia.B);
 	}
 	
 	@Test
-	public void calcularValorTaxaTipoA() {
-		transferencia.setDataAgendamento(LocalDate.now());
+	public void calcularValorTaxaTipoBParaAgendamentoComMaisTrintaDias () {
+		transferencia.setDataAgendamento(LocalDate.parse("2016-08-20"));
 		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
-				.getValorTaxa()); 		
-
-		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal(6.5)) == 0);
+				.getValorTaxa());
+		
+		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal(8)) == 0); 
 	}
 	
-	
+	@Test
+	public void calcularValorTaxaTipoBParaAgendamentoComAteTrintaDias () {
+		transferencia.setDataAgendamento(LocalDate.parse("2016-11-20"));
+		transferencia.setTaxa(CalculadorTaxaService.getInstance(transferencia)
+				.getValorTaxa());
+		
+		assertTrue(transferencia.getTaxa().compareTo(new BigDecimal(10)) == 0); 
+	}
 
 }

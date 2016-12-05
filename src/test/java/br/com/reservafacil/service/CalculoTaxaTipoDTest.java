@@ -1,4 +1,4 @@
-package br.com.reservafacil.modelo;
+package br.com.reservafacil.service;
 
 import static org.junit.Assert.assertTrue;
 
